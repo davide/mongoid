@@ -163,13 +163,13 @@ module Mongoid #:nodoc:
         "#<#{self.class.name} _id: #{id}, #{attrs * ', '}>"
       end
 
-      # Notify observers of an update.
+      # Notify object observers of an update.
       #
       # Example:
       #
       # <tt>person.notify</tt>
       def notify
-        notify_observers(self)
+        notify_object_observers(self)
       end
 
       # Sets up a child/parent association. This is used for newly created
@@ -187,7 +187,7 @@ module Mongoid #:nodoc:
       def parentize(object, association_name)
         self._parent = object
         self.association_name = association_name.to_s
-        add_observer(object)
+        add_object_observer(object)
       end
 
       # Return the attributes hash.
@@ -247,7 +247,7 @@ module Mongoid #:nodoc:
       #
       # This will also cause the observing +Document+ to notify it's parent if
       # there is any.
-      def observe(child, clear = false)
+      def object_observe(child, clear = false)
         name = child.association_name
         attrs = child.instance_variable_get(:@attributes)
         clear ? @attributes.delete(name) : @attributes.insert(name, attrs)

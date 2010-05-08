@@ -192,7 +192,7 @@ module Mongoid #:nodoc:
             limit(attrs, name, options)
             association = send(name)
             if association
-              # observe(association, true)
+              # object_observe(association, true)
               association.nested_build(attrs, options)
             else
               send("build_#{name}", attrs, options)

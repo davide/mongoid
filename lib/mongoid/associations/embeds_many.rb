@@ -41,7 +41,7 @@ module Mongoid #:nodoc:
       def clear
         unless @target.empty?
           document = @target.first
-          document.notify_observers(document, true)
+          document.notify_object_observers(document, true)
           @target.clear
         end
       end

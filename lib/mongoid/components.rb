@@ -19,7 +19,7 @@ module Mongoid #:nodoc
       include Mongoid::Indexes
       include Mongoid::Matchers
       include Mongoid::Memoization
-      include Mongoid::Observable
+      include Mongoid::ObjectObservable
       include Mongoid::Paths
       include Mongoid::Persistence
       include Mongoid::State
